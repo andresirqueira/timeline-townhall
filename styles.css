@@ -37,6 +37,35 @@ body {
     font-weight: 300;
 }
 
+.last-update {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.last-update i {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.last-update span {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+}
+
+#lastUpdate {
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+}
+
 
 
 .timeline-container {
@@ -389,6 +418,24 @@ body {
     .observation span {
         color: #333 !important;
     }
+    
+    .last-update {
+        background: white !important;
+        color: black !important;
+        border: 1px solid #ddd;
+    }
+    
+    .last-update i {
+        color: #666 !important;
+    }
+    
+    .last-update span {
+        color: #333 !important;
+    }
+    
+    #lastUpdate {
+        color: #000 !important;
+    }
 }
 
 /* Responsive Design */
@@ -399,6 +446,15 @@ body {
     
     .header h1 {
         font-size: 2rem;
+    }
+    
+    .last-update {
+        padding: 4px 8px;
+        margin-top: 6px;
+    }
+    
+    .last-update span {
+        font-size: 0.75rem;
     }
     
     .timeline-container {
