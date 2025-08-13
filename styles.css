@@ -108,17 +108,7 @@ body {
     margin-right: 30px;
 }
 
-.timeline-item:nth-child(even) .timeline-content.warning-bg {
-    border-right: 4px solid #f59e0b;
-}
 
-.timeline-item:nth-child(even) .timeline-content.success-bg {
-    border-right: 4px solid #10b981;
-}
-
-.timeline-item:nth-child(even) .timeline-content.info-bg {
-    border-right: 4px solid #3b82f6;
-}
 
 .timeline-content {
     width: 45%;
@@ -133,20 +123,7 @@ body {
     margin-left: 30px;
 }
 
-.timeline-content.warning-bg {
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-    border-left: 4px solid #f59e0b;
-}
 
-.timeline-content.success-bg {
-    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-    border-left: 4px solid #10b981;
-}
-
-.timeline-content.info-bg {
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-    border-left: 4px solid #3b82f6;
-}
 
 
 
@@ -181,20 +158,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-.warning-bg .timeline-date {
-    color: #92400e;
-    border-bottom: 2px solid rgba(245, 158, 11, 0.3);
-}
 
-.success-bg .timeline-date {
-    color: #065f46;
-    border-bottom: 2px solid rgba(16, 185, 129, 0.3);
-}
-
-.info-bg .timeline-date {
-    color: #1e40af;
-    border-bottom: 2px solid rgba(59, 130, 246, 0.3);
-}
 
 .timeline-date i {
     font-size: 0.9rem;
@@ -229,9 +193,11 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    padding: 8px 0;
+    padding: 8px 12px;
     border-bottom: 1px solid #f1f5f9;
     transition: all 0.2s ease;
+    border-radius: 6px;
+    margin: 2px 0;
 }
 
 .timeline-event:last-child {
@@ -239,10 +205,23 @@ body {
 }
 
 .timeline-event:hover {
-    background: rgba(102, 126, 234, 0.05);
-    margin: 0 -8px;
-    padding: 8px 8px;
-    border-radius: 6px;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.timeline-event.warning-bg {
+    background: linear-gradient(135deg, rgba(255, 251, 235, 0.8) 0%, rgba(254, 243, 199, 0.6) 100%);
+    border-left: 3px solid rgba(245, 158, 11, 0.6);
+}
+
+.timeline-event.success-bg {
+    background: linear-gradient(135deg, rgba(236, 253, 245, 0.8) 0%, rgba(209, 250, 229, 0.6) 100%);
+    border-left: 3px solid rgba(16, 185, 129, 0.6);
+}
+
+.timeline-event.info-bg {
+    background: linear-gradient(135deg, rgba(239, 246, 255, 0.8) 0%, rgba(219, 234, 254, 0.6) 100%);
+    border-left: 3px solid rgba(59, 130, 246, 0.6);
 }
 
 .timeline-event i {

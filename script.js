@@ -1,7 +1,7 @@
 // Dados da timeline baseados na imagem fornecida
 const timelineData = [
     {
-        date: '18/02/2025',
+        date: '10/02/2025',
         description: 'Reunião mensal de resultados com falhas no microfone.',
         type: 'meeting',
         highlight: true,
@@ -17,8 +17,24 @@ const timelineData = [
         status: 'info'
     },
     {
+        date: '10/03/2025',
+        description: 'Evento com falhas no microfone.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-exclamation-triangle',
+        status: 'warning'
+    },
+    {
         date: '11/03/2025',
         description: 'Reunião mensal de resultados com falhas no microfone.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-exclamation-triangle',
+        status: 'warning'
+    },
+    {
+        date: '12/03/2025',
+        description: 'Evento diretoria com falhas no microfone.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-exclamation-triangle',
@@ -113,6 +129,14 @@ const timelineData = [
         status: 'success'
     },
     {
+        date: '13/05/2025',
+        description: 'Reunião mensal de LAR sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
         date: '15/05/2025',
         description: 'Realizado teste com fonte de áudio continua nos microfones.',
         type: 'solution',
@@ -129,8 +153,40 @@ const timelineData = [
         status: 'info'
     },
     {
-        date: '10/06/2025',
+        date: '28/05/2025',
+        description: 'Evento Diretoria sem falhas no microfone.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
+        date: '11/06/2025',
         description: 'Reunião mensal de resultados pequenas falhas.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-exclamation-triangle',
+        status: 'warning'
+    },
+    {
+        date: '11/06/2025',
+        description: 'Reunião mensal de resultados LAR sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
+        date: '11/06/2025',
+        description: 'Evento Marketing sem falhas no microfone.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
+        date: '16/06/2025',
+        description: 'Evento com falhas no microfone.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-exclamation-triangle',
@@ -145,8 +201,32 @@ const timelineData = [
         status: 'info'
     },
     {
+        date: '24/06/2025',
+        description: 'Evento sem falhas no microfone.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
+        date: '26/06/2025',
+        description: 'Evento IA Gemini sem falhas no microfone.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
         date: '15/07/2025',
         description: 'Reunião mensal de resultados sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
+        date: '07/08/2025',
+        description: 'Evento sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -222,7 +302,7 @@ class TimelineManager {
         const eventsList = events.map(event => {
             const eventIconClass = `timeline-icon ${event.status}`;
             return `
-                <div class="timeline-event">
+                <div class="timeline-event ${event.status}-bg">
                     <i class="${event.icon} ${eventIconClass}"></i>
                     <span>${event.description}</span>
                 </div>
@@ -230,7 +310,7 @@ class TimelineManager {
         }).join('');
 
         timelineItem.innerHTML = `
-            <div class="timeline-content ${mainStatus}-bg">
+            <div class="timeline-content">
                 <div class="timeline-date">
                     ${date}
                 </div>
