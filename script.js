@@ -154,7 +154,7 @@ const timelineData = [
     },
     {
         date: '28/05/2025',
-        description: 'Evento Diretoria sem falhas no microfone.',
+        description: 'Evento Diretoria sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -178,7 +178,7 @@ const timelineData = [
     },
     {
         date: '11/06/2025',
-        description: 'Evento Marketing sem falhas no microfone.',
+        description: 'Evento Marketing sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -194,15 +194,16 @@ const timelineData = [
     },
     {
         date: '16/06/2025',
-        description: 'Identificado faixas de frequência e conectado microfone em zonas limpas.',
+        description: 'Identificado faixas de frequências via Wireless Workbench e sincronizado microfone em zonas limpas.',
         type: 'solution',
-        highlight: false,
+        highlight: true,
         icon: 'fas fa-signal',
-        status: 'info'
+        status: 'turnpoint',
+        isTurnPoint: true
     },
     {
         date: '24/06/2025',
-        description: 'Evento sem falhas no microfone.',
+        description: 'Evento sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -210,7 +211,7 @@ const timelineData = [
     },
     {
         date: '26/06/2025',
-        description: 'Evento IA Gemini sem falhas no microfone.',
+        description: 'Evento IA Gemini sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',

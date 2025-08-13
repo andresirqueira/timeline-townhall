@@ -183,6 +183,12 @@ body {
     text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
+.timeline-icon.turnpoint {
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    animation: turnpoint-icon-pulse 1.5s ease-in-out infinite;
+}
+
 .timeline-events {
     display: flex;
     flex-direction: column;
@@ -222,6 +228,29 @@ body {
 .timeline-event.info-bg {
     background: linear-gradient(135deg, rgba(239, 246, 255, 0.8) 0%, rgba(219, 234, 254, 0.6) 100%);
     border-left: 3px solid rgba(59, 130, 246, 0.6);
+}
+
+.timeline-event.turnpoint-bg {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+    border-left: 4px solid #ffd700;
+    border-right: 4px solid #ffd700;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    position: relative;
+    animation: turnpoint-glow 2s ease-in-out infinite alternate;
+}
+
+.timeline-event.turnpoint-bg::before {
+    content: '🎯 TURN POINT';
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    background: #ffd700;
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
 }
 
 .timeline-event i {
@@ -267,6 +296,13 @@ body {
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2), 0 4px 12px rgba(59, 130, 246, 0.3);
     animation: pulse-info 2s infinite;
+}
+
+.timeline-marker.turnpoint {
+    background: linear-gradient(135deg, #ffd700, #ffb300);
+    box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.3), 0 6px 20px rgba(255, 215, 0, 0.4);
+    animation: turnpoint-marker-pulse 1.5s ease-in-out infinite;
+    transform: scale(1.2);
 }
 
 
@@ -454,6 +490,37 @@ body {
     }
     50% {
         box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.3), 0 6px 16px rgba(59, 130, 246, 0.4);
+    }
+}
+
+@keyframes turnpoint-glow {
+    0% {
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    }
+}
+
+@keyframes turnpoint-icon-pulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+}
+
+@keyframes turnpoint-marker-pulse {
+    0%, 100% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.3), 0 6px 20px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.4);
+        box-shadow: 0 0 0 8px rgba(255, 215, 0, 0.4), 0 8px 25px rgba(255, 215, 0, 0.6);
     }
 }
 
