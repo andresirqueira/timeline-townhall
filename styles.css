@@ -467,6 +467,62 @@ body {
     }
 }
 
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .header p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .timeline-container {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    
+    .timeline-content {
+        padding: 12px 14px;
+        border-radius: 10px;
+    }
+    
+    .timeline-date {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+    }
+    
+    .timeline-event {
+        padding: 6px 10px;
+        gap: 8px;
+    }
+    
+    .timeline-event span {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    .timeline-event i {
+        font-size: 0.85rem;
+    }
+    
+    .observation {
+        padding: 8px 12px;
+        margin-top: 12px;
+    }
+    
+    .observation span {
+        font-size: 0.75rem;
+    }
+}
+
 /* Animation for slide transitions */
 @keyframes slideIn {
     from {
