@@ -116,9 +116,10 @@ const timelineData = [
         date: '09/05/2025',
         description: 'Identificamos uma configuração que corta o áudio se o ruído ultrapassa valor configurado.',
         type: 'solution',
-        highlight: false,
+        highlight: true,
         icon: 'fas fa-sliders-h',
-        status: 'info'
+        status: 'turnpoint',
+        isTurnPoint: true
     },
     {
         date: '13/05/2025',
