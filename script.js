@@ -371,16 +371,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function updateLastUpdate() {
-    const now = new Date();
+    // Get the last modification date from the timeline data
+    const timelineDates = timelineData.map(item => new Date(item.date.split('/').reverse().join('-')));
+    const lastEventDate = new Date(Math.max(...timelineDates));
+    
+    // Format the date in Brazilian format
     const options = {
         day: '2-digit',
         month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
+        year: 'numeric'
     };
     
-    const formattedDate = now.toLocaleDateString('pt-BR', options);
+    const formattedDate = lastEventDate.toLocaleDateString('pt-BR', options);
     document.getElementById('lastUpdate').textContent = formattedDate;
 }
 
