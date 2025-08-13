@@ -37,80 +37,7 @@ body {
     font-weight: 300;
 }
 
-.stats-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
 
-.stats-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: all 0.3s ease;
-    min-width: 100px;
-    backdrop-filter: blur(10px);
-}
-
-.stats-item:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.stats-item.warning {
-    border-left: 3px solid rgba(245, 158, 11, 0.6);
-}
-
-.stats-item.success {
-    border-left: 3px solid rgba(16, 185, 129, 0.6);
-}
-
-.stats-item.info {
-    border-left: 3px solid rgba(59, 130, 246, 0.6);
-}
-
-.stats-item i {
-    font-size: 1.1rem;
-    flex-shrink: 0;
-    opacity: 0.8;
-}
-
-.stats-item.warning i {
-    color: rgba(245, 158, 11, 0.8);
-}
-
-.stats-item.success i {
-    color: rgba(16, 185, 129, 0.8);
-}
-
-.stats-item.info i {
-    color: rgba(59, 130, 246, 0.8);
-}
-
-.stats-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.stats-number {
-    font-size: 1.3rem;
-    font-weight: 600;
-    line-height: 1;
-    color: #4a5568;
-}
-
-.stats-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #718096;
-    margin-top: 1px;
-}
 
 .timeline-container {
     background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
@@ -425,15 +352,7 @@ body {
         break-inside: avoid;
     }
     
-    .stats-container {
-        margin-bottom: 15px;
-    }
-    
-    .stats-item {
-        background: white !important;
-        border: 1px solid #ddd;
-        box-shadow: none;
-    }
+
     
     .legend {
         background: white !important;
@@ -494,22 +413,7 @@ body {
         text-align: left;
     }
     
-    .stats-container {
-        gap: 12px;
-    }
-    
-    .stats-item {
-        min-width: 90px;
-        padding: 8px 12px;
-    }
-    
-    .stats-number {
-        font-size: 1.1rem;
-    }
-    
-    .stats-label {
-        font-size: 0.7rem;
-    }
+
     
     .timeline-marker {
         margin: 15px 0;

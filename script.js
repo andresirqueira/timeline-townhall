@@ -186,54 +186,9 @@ class TimelineManager {
     init() {
         this.renderTimeline();
         this.showAll(); // Show all items
-        this.renderStats(); // Add statistics
     }
 
-    renderStats() {
-        const stats = this.calculateStats();
-        const statsContainer = document.createElement('div');
-        statsContainer.className = 'stats-container';
-        
-        statsContainer.innerHTML = `
-            <div class="stats-item warning">
-                <i class="fas fa-exclamation-triangle"></i>
-                <div class="stats-content">
-                    <span class="stats-number">${stats.warning}</span>
-                    <span class="stats-label">Com Falhas</span>
-                </div>
-            </div>
-            <div class="stats-item success">
-                <i class="fas fa-check-circle"></i>
-                <div class="stats-content">
-                    <span class="stats-number">${stats.success}</span>
-                    <span class="stats-label">Sem Falhas</span>
-                </div>
-            </div>
-            <div class="stats-item info">
-                <i class="fas fa-tools"></i>
-                <div class="stats-content">
-                    <span class="stats-number">${stats.info}</span>
-                    <span class="stats-label">Testes/Ações</span>
-                </div>
-            </div>
-        `;
-        
-        // Insert stats before timeline container
-        const timelineContainer = document.querySelector('.timeline-container');
-        timelineContainer.parentNode.insertBefore(statsContainer, timelineContainer);
-    }
 
-    calculateStats() {
-        const stats = { warning: 0, success: 0, info: 0 };
-        
-        Object.values(this.groupedData).forEach(events => {
-            events.forEach(event => {
-                stats[event.status]++;
-            });
-        });
-        
-        return stats;
-    }
 
     renderTimeline() {
         this.timelineContainer.innerHTML = '';
