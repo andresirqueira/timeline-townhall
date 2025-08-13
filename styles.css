@@ -307,23 +307,30 @@ body {
 
 
 
-.legend {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    background: rgba(255,255,255,0.1);
-    padding: 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-}
-
-.legend-item {
+.observation {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    color: white;
+    background: rgba(255,255,255,0.05);
+    padding: 12px 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px;
+}
+
+.observation i {
+    color: rgba(255,255,255,0.7);
     font-size: 0.9rem;
+}
+
+.observation span {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
 }
 
 
@@ -369,10 +376,18 @@ body {
     
 
     
-    .legend {
+    .observation {
         background: white !important;
         color: black !important;
         border: 1px solid #ddd;
+    }
+    
+    .observation i {
+        color: #666 !important;
+    }
+    
+    .observation span {
+        color: #333 !important;
     }
 }
 
@@ -436,10 +451,13 @@ body {
     
 
     
-    .legend {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+    .observation {
+        padding: 10px 15px;
+        margin-top: 15px;
+    }
+    
+    .observation span {
+        font-size: 0.8rem;
     }
 }
 

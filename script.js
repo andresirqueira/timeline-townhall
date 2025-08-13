@@ -241,6 +241,14 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },
+    {
+        date: '12/08/2025',
+        description: 'Reunião mensal de LAR sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
