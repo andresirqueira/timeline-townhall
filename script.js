@@ -329,7 +329,7 @@ class TimelineManager {
         }).join('');
 
         timelineItem.innerHTML = `
-            <div class="timeline-content">
+            <div class="timeline-content status-${mainStatus}">
                 <div class="timeline-date">
                     ${date}
                 </div>
