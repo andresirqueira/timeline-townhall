@@ -264,6 +264,7 @@ const timelineData = [
 class TimelineManager {
     constructor() {
         this.timelineContainer = document.querySelector('.timeline');
+        this.summaryContainer = document.querySelector('.summary-grid');
         this.groupedData = this.groupEventsByDate(timelineData);
 
         this.init();
@@ -283,11 +284,39 @@ class TimelineManager {
     }
 
     init() {
+        this.renderSummary();
         this.renderTimeline();
         this.showAll(); // Show all items
     }
 
+    renderSummary() {
+        this.summaryContainer.innerHTML = '';
+        
+        // Get the last 10 events for summary
+        const sortedEvents = timelineData.sort((a, b) => {
+            const dateA = new Date(a.date.split('/').reverse().join('-'));
+            const dateB = new Date(b.date.split('/').reverse().join('-'));
+            return dateA - dateB; // Oldest first
+        }).slice(-10); // Get last 10 from sorted array
 
+        sortedEvents.forEach((event, index) => {
+            const summaryItem = document.createElement('div');
+            summaryItem.className = `summary-item ${event.status}`;
+            summaryItem.setAttribute('data-date', event.date);
+            summaryItem.setAttribute('data-event-index', index);
+            
+            // Use normal icon size for turnpoint, not the large one
+            const iconClass = event.status === 'turnpoint' ? 'fas fa-sliders-h' : event.icon;
+            summaryItem.innerHTML = `<i class="${iconClass}"></i>`;
+            
+            // Add click event to scroll to timeline item
+            summaryItem.addEventListener('click', () => {
+                this.scrollToTimelineItem(event.date);
+            });
+            
+            this.summaryContainer.appendChild(summaryItem);
+        });
+    }
 
     renderTimeline() {
         this.timelineContainer.innerHTML = '';
@@ -355,6 +384,36 @@ class TimelineManager {
                 item.classList.add('active');
             }, index * 150);
         });
+    }
+
+    // Method to scroll to specific timeline item by date
+    scrollToTimelineItem(date) {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        let targetItem = null;
+        
+        // Find the timeline item with matching date
+        timelineItems.forEach(item => {
+            const timelineDate = item.querySelector('.timeline-date');
+            if (timelineDate && timelineDate.textContent.trim() === date) {
+                targetItem = item;
+            }
+        });
+        
+        if (targetItem) {
+            // Scroll to the timeline item with smooth behavior
+            targetItem.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+            
+            // Add highlight effect with multiple stages
+            targetItem.classList.add('highlighted');
+            
+            // Remove highlight after animation
+            setTimeout(() => {
+                targetItem.classList.remove('highlighted');
+            }, 3000);
+        }
     }
 }
 
