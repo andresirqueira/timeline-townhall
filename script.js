@@ -250,26 +250,35 @@ const timelineData = [
         icon: 'fas fa-check-circle',
         status: 'success'
     }
+    ,
+    {
+        date: '09/09/2025',
+        description: 'Reunião mensal de resultados sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    }
 ];
 
 class TimelineManager {
     constructor() {
         this.timelineContainer = document.querySelector('.timeline');
         this.groupedData = this.groupEventsByDate(timelineData);
-        
+
         this.init();
     }
 
     groupEventsByDate(data) {
         const grouped = {};
-        
+
         data.forEach(item => {
             if (!grouped[item.date]) {
                 grouped[item.date] = [];
             }
             grouped[item.date].push(item);
         });
-        
+
         return grouped;
     }
 
@@ -282,13 +291,13 @@ class TimelineManager {
 
     renderTimeline() {
         this.timelineContainer.innerHTML = '';
-        
+
         const sortedDates = Object.keys(this.groupedData).sort((a, b) => {
             const dateA = new Date(a.split('/').reverse().join('-'));
             const dateB = new Date(b.split('/').reverse().join('-'));
             return dateA - dateB;
         });
-        
+
         sortedDates.forEach((date, index) => {
             const events = this.groupedData[date];
             const timelineItem = this.createTimelineItem(date, events, index);
@@ -305,9 +314,9 @@ class TimelineManager {
         const hasWarning = events.some(event => event.status === 'warning');
         const hasSuccess = events.some(event => event.status === 'success');
         const mainStatus = hasWarning ? 'warning' : (hasSuccess ? 'success' : 'info');
-        
 
-        
+
+
         // Create events list
         const eventsList = events.map(event => {
             const eventIconClass = `timeline-icon ${event.status}`;
@@ -352,10 +361,10 @@ class TimelineManager {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const timeline = new TimelineManager();
-    
+
     // Add some interactive features
     const timelineItems = document.querySelectorAll('.timeline-item');
-    
+
     timelineItems.forEach(item => {
         item.addEventListener('click', () => {
             // Add click effect
