@@ -266,6 +266,14 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },
+    {
+        date: '16/09/2025',
+        description: 'Reunião Simone Vicari.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
