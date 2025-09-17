@@ -269,7 +269,7 @@ const timelineData = [
     },
     {
         date: '16/09/2025',
-        description: 'Reunião Simone Vicari.',
+        description: 'Reunião Diretoria Simone sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
