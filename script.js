@@ -282,6 +282,14 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },
+    {
+        date: '23/09/2025',
+        description: 'Reunião WH talks sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
