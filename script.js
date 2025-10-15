@@ -290,6 +290,22 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },
+    {
+        date: '14/10/2025',
+        description: 'Reunião mensal de resultados com falhas (conflito de IP).',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-exclamation-triangle',
+        status: 'warning'
+    },
+    {
+        date: '14/10/2025',
+        description: 'Reunião sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
