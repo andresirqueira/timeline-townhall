@@ -309,7 +309,15 @@ const timelineData = [
     },
     {
         date: '16/10/2025',
-        description: 'Reunião sem ocorrências.',
+        description: 'Reunião HR sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },
+    {
+        date: '16/10/2025',
+        description: 'Reunião LEGAL sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
