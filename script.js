@@ -365,6 +365,14 @@ const timelineData = [
     },
     {
         date: '10/11/2025',
+        description: 'Reunião Inspirando (Jaddy) sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },,
+    {
+        date: '10/11/2025',
         description: 'Reunião mensal de LAR sem ocorrências.',
         type: 'meeting',
         highlight: true,
