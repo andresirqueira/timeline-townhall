@@ -393,7 +393,16 @@ class TimelineManager {
     constructor() {
         this.timelineContainer = document.querySelector('.timeline');
         this.summaryContainer = document.querySelector('.summary-grid');
-        this.groupedData = this.groupEventsByDate(timelineData);
+        this.summaryPageSize = 10;
+        this.summaryCurrentSlide = 0;
+        this.summaryTotalSlides = 0;
+        this.sortedEvents = timelineData.slice().sort((a, b) => {
+            const dateA = new Date(a.date.split('/').reverse().join('-'));
+            const dateB = new Date(b.date.split('/').reverse().join('-'));
+            return dateA - dateB;
+        });
+        this.setupSummarySliderStructure();
+        this.groupedData = this.groupEventsByDate(this.sortedEvents);
 
         this.init();
     }
@@ -418,32 +427,140 @@ class TimelineManager {
     }
 
     renderSummary() {
-        this.summaryContainer.innerHTML = '';
-        
-        // Get the last 10 events for summary
-        const sortedEvents = timelineData.sort((a, b) => {
-            const dateA = new Date(a.date.split('/').reverse().join('-'));
-            const dateB = new Date(b.date.split('/').reverse().join('-'));
-            return dateA - dateB; // Oldest first
-        }).slice(-10); // Get last 10 from sorted array
+        if (!this.summaryTrack) return;
 
-        sortedEvents.forEach((event, index) => {
-            const summaryItem = document.createElement('div');
-            summaryItem.className = `summary-item ${event.status}`;
-            summaryItem.setAttribute('data-date', event.date);
-            summaryItem.setAttribute('data-event-index', index);
-            
-            // Use normal icon size for turnpoint, not the large one
-            const iconClass = event.status === 'turnpoint' ? 'fas fa-sliders-h' : event.icon;
-            summaryItem.innerHTML = `<i class="${iconClass}"></i>`;
-            
-            // Add click event to scroll to timeline item
-            summaryItem.addEventListener('click', () => {
-                this.scrollToTimelineItem(event.date);
+        this.summaryTrack.innerHTML = '';
+        
+        const totalEvents = this.sortedEvents.length;
+        this.summaryTotalSlides = Math.max(1, Math.ceil(totalEvents / this.summaryPageSize));
+        // Always start from the last slide (most recent events)
+        this.summaryCurrentSlide = this.summaryTotalSlides - 1;
+
+        for (let slideIndex = 0; slideIndex < this.summaryTotalSlides; slideIndex++) {
+            const slide = document.createElement('div');
+            slide.className = 'summary-slide';
+
+            const sliceStart = slideIndex * this.summaryPageSize;
+            const sliceEnd = Math.min(sliceStart + this.summaryPageSize, totalEvents);
+            const slideEvents = this.sortedEvents.slice(sliceStart, sliceEnd);
+
+            slideEvents.forEach((event, itemIndex) => {
+                const absoluteIndex = sliceStart + itemIndex;
+                const summaryItem = this.createSummaryItem(event, absoluteIndex);
+                slide.appendChild(summaryItem);
             });
-            
-            this.summaryContainer.appendChild(summaryItem);
+
+            this.summaryTrack.appendChild(slide);
+        }
+
+        this.updateSummarySliderPosition(true);
+        this.updateSummaryControls();
+    }
+
+    createSummaryItem(event, absoluteIndex) {
+        const summaryItem = document.createElement('div');
+        summaryItem.className = `summary-item ${event.status}`;
+        summaryItem.setAttribute('data-date', event.date);
+        summaryItem.setAttribute('data-event-index', absoluteIndex);
+
+        const iconClass = event.status === 'turnpoint' ? 'fas fa-sliders-h' : event.icon;
+        summaryItem.innerHTML = `<i class="${iconClass}"></i>`;
+
+        summaryItem.addEventListener('click', () => {
+            this.scrollToTimelineItem(event.date);
         });
+
+        return summaryItem;
+    }
+
+    setupSummarySliderStructure() {
+        if (!this.summaryContainer) return;
+
+        const parent = this.summaryContainer.parentElement;
+        this.summarySlider = document.createElement('div');
+        this.summarySlider.className = 'summary-slider';
+
+        this.summaryViewport = document.createElement('div');
+        this.summaryViewport.className = 'summary-slider-viewport';
+
+        parent.insertBefore(this.summarySlider, this.summaryContainer);
+        this.summarySlider.appendChild(this.summaryViewport);
+        this.summaryViewport.appendChild(this.summaryContainer);
+
+        this.summaryTrack = this.summaryContainer;
+        this.summaryTrack.classList.add('summary-slider-track');
+
+        this.createSummaryNavigation();
+    }
+
+    createSummaryNavigation() {
+        if (!this.summarySlider) return;
+
+        this.summaryPrevButton = document.createElement('button');
+        this.summaryPrevButton.className = 'summary-nav summary-nav-prev';
+        this.summaryPrevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        this.summaryPrevButton.addEventListener('click', () => this.changeSummaryPage(-1));
+
+        this.summaryNextButton = document.createElement('button');
+        this.summaryNextButton.className = 'summary-nav summary-nav-next';
+        this.summaryNextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        this.summaryNextButton.addEventListener('click', () => this.changeSummaryPage(1));
+
+        this.summaryPagination = document.createElement('div');
+        this.summaryPagination.className = 'summary-pagination';
+
+        this.summaryCounter = document.createElement('span');
+        this.summaryCounter.className = 'summary-counter';
+        this.summaryPagination.appendChild(this.summaryCounter);
+
+        this.summarySlider.appendChild(this.summaryPrevButton);
+        this.summarySlider.appendChild(this.summaryViewport);
+        this.summarySlider.appendChild(this.summaryNextButton);
+        this.summarySlider.appendChild(this.summaryPagination);
+    }
+
+    changeSummaryPage(direction) {
+        if (this.summaryTotalSlides <= 1) return;
+
+        const newSlide = this.summaryCurrentSlide + direction;
+        this.summaryCurrentSlide = Math.min(Math.max(0, newSlide), this.summaryTotalSlides - 1);
+        this.updateSummarySliderPosition();
+        this.updateSummaryControls();
+    }
+
+    updateSummaryControls() {
+        if (!this.summaryPagination) return;
+
+        const totalEvents = this.sortedEvents.length;
+        const startDisplay = totalEvents === 0 ? 0 : (this.summaryCurrentSlide * this.summaryPageSize) + 1;
+        const endDisplay = Math.min((this.summaryCurrentSlide + 1) * this.summaryPageSize, totalEvents);
+
+        this.summaryCounter.textContent = `${startDisplay}-${endDisplay} de ${totalEvents}`;
+
+        if (this.summaryPrevButton) {
+            this.summaryPrevButton.disabled = this.summaryCurrentSlide === 0;
+        }
+
+        if (this.summaryNextButton) {
+            this.summaryNextButton.disabled = this.summaryCurrentSlide >= this.summaryTotalSlides - 1;
+        }
+    }
+
+    updateSummarySliderPosition(skipAnimation = false) {
+        if (!this.summaryTrack) return;
+
+        if (skipAnimation) {
+            this.summaryTrack.classList.add('summary-slider-initial');
+        }
+
+        const offsetPercentage = this.summaryCurrentSlide * 100;
+        this.summaryTrack.style.transform = `translateX(-${offsetPercentage}%)`;
+
+        if (skipAnimation) {
+            requestAnimationFrame(() => {
+                this.summaryTrack.classList.remove('summary-slider-initial');
+            });
+        }
     }
 
     renderTimeline() {
@@ -559,6 +676,26 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 item.style.transform = '';
             }, 150);
+        });
+    });
+
+    // Scroll to Top Button
+    const scrollToTopButton = document.getElementById('scrollToTop');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopButton.classList.add('visible');
+        } else {
+            scrollToTopButton.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll to top when button is clicked
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 });
