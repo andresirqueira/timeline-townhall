@@ -394,6 +394,30 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },    
+    {
+        date: '09/12/2025',
+        description: 'Suporte a evento do setor de suprimentos.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '15/12/2025',
+        description: 'Suporte a evento do STAFF VP.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '16/12/2025',
+        description: 'Suporte para evento de T.I. .',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
