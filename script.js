@@ -386,6 +386,14 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },    
+    {
+        date: '08/12/2025',
+        description: 'Reunião mensal de resultados sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
