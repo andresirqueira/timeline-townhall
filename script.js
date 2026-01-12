@@ -421,7 +421,7 @@ const timelineData = [
     },    
     {
         date: '12/01/2026',
-        description: 'Apresentação Ludo.',
+        description: 'Apresentação VP Ludo.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
