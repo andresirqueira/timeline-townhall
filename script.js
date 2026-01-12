@@ -418,6 +418,14 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },    
+    {
+        date: '12/01/2026',
+        description: 'Apresentação Ludo.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
