@@ -397,7 +397,7 @@ const timelineData = [
     },    
     {
         date: '09/12/2025',
-        description: 'Suporte a evento do setor de suprimentos.',
+        description: 'Suporte a evento do setor de suprimentos sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -405,7 +405,7 @@ const timelineData = [
     },    
     {
         date: '15/12/2025',
-        description: 'Suporte a evento do STAFF VP.',
+        description: 'Suporte a evento do STAFF VP sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -413,7 +413,7 @@ const timelineData = [
     },    
     {
         date: '16/12/2025',
-        description: 'Suporte para evento de T.I. .',
+        description: 'Suporte para evento de T.I. sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
@@ -421,7 +421,15 @@ const timelineData = [
     },    
     {
         date: '12/01/2026',
-        description: 'Apresentação VP Ludo.',
+        description: 'Apresentação VP Ludo sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '20/01/2026',
+        description: 'Reunião mensal de resultados sem ocorrências.',
         type: 'meeting',
         highlight: true,
         icon: 'fas fa-check-circle',
