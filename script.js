@@ -442,6 +442,54 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },    
+    {
+        date: '10/03/2026',
+        description: 'Reunião mensal de resultados sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '16/03/2026',
+        description: 'Suporte a evento do D2C.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '19/03/2026',
+        description: 'Suporte a evento do T.I.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '26/03/2026',
+        description: 'Suporte para evento da diretoria (Whirlpool Talks).',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '15/04/2026',
+        description: 'Reunião mensal de resultados sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
+    },    
+    {
+        date: '15/04/2026',
+        description: 'Suporte ao evento Ludo.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
