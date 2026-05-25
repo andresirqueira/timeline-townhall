@@ -498,6 +498,14 @@ const timelineData = [
         highlight: true,
         icon: 'fas fa-check-circle',
         status: 'success'
+    },    
+    {
+        date: '21/05/2026',
+        description: 'Suporte ao evento LAR GIT All Hands, sem ocorrências.',
+        type: 'meeting',
+        highlight: true,
+        icon: 'fas fa-check-circle',
+        status: 'success'
     }
 ];
 
